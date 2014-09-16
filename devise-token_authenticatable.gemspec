@@ -1,12 +1,10 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$:.push File.expand_path("../lib", __FILE__)
 require 'devise/token_authenticatable/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "devise-token_authenticatable"
   spec.version       = Devise::TokenAuthenticatable::VERSION.dup
-  spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Sebastian Oelke"]
   spec.email         = ["dev@sohleeatsworld.de"]
   spec.description   = %q{This gem provides the extracted Token Authenticatable module of devise.
@@ -17,16 +15,16 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib", "app/controllers"]
 
 
   spec.add_dependency "devise",                         "~> 3.3.0"
+  spec.add_dependency 'rails', '~> 4.1.0'
 
-  spec.add_development_dependency "rails",              "~> 4.1.0"
   spec.add_development_dependency "rspec-rails",        "~> 3.0.2"
   spec.add_development_dependency "pry",                "~> 0.10.0"
+  spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "factory_girl_rails", "~> 4.4.0"
   spec.add_development_dependency "timecop",            "~> 0.7.0"
   spec.add_development_dependency "bundler",            "~> 1.6"

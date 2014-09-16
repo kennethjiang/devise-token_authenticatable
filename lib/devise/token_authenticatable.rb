@@ -1,4 +1,4 @@
-require "devise/token_authenticatable/strategy"
+require 'devise'
 
 module Devise
   module TokenAuthenticatable
@@ -23,5 +23,11 @@ end
 # Register TokenAuthenticatable module in Devise.
 Devise::add_module  :token_authenticatable,
                     model: 'devise/token_authenticatable/model',
+                    :controller => :authentication_token,
+                    :route     => :authentication_token,
                     strategy: true,
                     no_input: true
+
+require 'devise/token_authenticatable/routes'
+require 'devise/token_authenticatable/rails'
+require "devise/token_authenticatable/strategy"
