@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 class Devise::AuthenticationTokenController < DeviseController
   respond_to :json
   prepend_before_filter :require_no_authentication, :only => [:create ]
